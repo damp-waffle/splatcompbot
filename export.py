@@ -1,10 +1,13 @@
+import os
 import mysql.connector
+from dotenv import load_dotenv
 
+load_dotenv()
 db = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="twInkbrush67",
-  database="splat_tweets_learnset"
+  host=os.getenv('SERVER_NAME'),
+  user=os.getenv('USERNAME'),
+  password=os.getenv('PASSWORD'),
+  database=os.getenv('DB_NAME')
 )
 mycursor = db.cursor()
 mycursor.execute("SELECT text FROM tweets")
