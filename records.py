@@ -18,13 +18,11 @@ myresult = mycursor.fetchall()
 sql = "INSERT INTO tweets(id, text, author_id) VALUES (%s, %s, %s)"
 success = 0
 for x in myresult:
-    print(str(x)[2:-3])
     resp = requestTweet(str(x)[2:-3])
     if(resp == ""):
         pass
     else:
         success += 1
-        # print(str(resp))
         val = (resp['id'],resp['text'],resp['author'])
         mycursor.execute("SELECT * FROM author WHERE author_id = '" + resp['author'] +"'")
         res = mycursor.fetchone()
