@@ -24,7 +24,7 @@ def requestTweet(url):
     y = str(x)
     y = y[(y.find("text=")+6):]
     text = y[:y.find(">,")-1]
-    if(re.match("https\S+",text)):
+    if(re.search(r"https\S+",text) != None):
         text = re.sub(r"http\S+", "", text)[:-1] #remove any media links
     y = y[(y.find("id=")+3):]
     author = y[:y.find(" ")]
