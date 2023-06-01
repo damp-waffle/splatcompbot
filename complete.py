@@ -6,7 +6,7 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 def generate():
     return(openai.Completion.create(
-    model="davinci:ft-personal-2023-05-18-07-16-43",
+    model=os.getenv("OPENAI_MODEL"),
     prompt="",
     max_tokens=100,
     temperature=0.1
